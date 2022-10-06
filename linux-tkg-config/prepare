@@ -605,15 +605,6 @@ _tkg_srcprep() {
     _msg="Patching from $_basekernel to $pkgver" && _tkg_patcher
   fi
 
-  # Hardened Patches
-  if [ "${_configfile}" = "config_hardened.x86_64" ] && [ "${_cpusched}" = "cfs" ]; then
-    tkgpatch="$srcdir/0012-linux-hardened.patch"
-    _msg="Using linux hardened patchset" && _tkg_patcher
-  else
-    tkgpatch="$srcdir/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-    _msg="Using Arch patches" && _tkg_patcher
-  fi
-
   if [ -z $_debug ]; then
 
   # graysky's cpu opts - https://github.com/graysky2/kernel_compiler_patch
